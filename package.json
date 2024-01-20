@@ -3,11 +3,12 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "conc \"bun run pdev\" \"bun run nextdev\"",
+    "nextdev": "next dev",
+    "pdev": "bunx partykit dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "pdev": "bunx partykit dev"
+    "lint": "next lint"
   },
   "dependencies": {
     "react": "^18",
