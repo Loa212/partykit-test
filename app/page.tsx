@@ -4,7 +4,7 @@ import Balloon from "@/components/Balloon";
 import { Poll } from "@/app/types";
 import { redirect } from "next/navigation";
 import { PARTYKIT_URL } from "./env";
-import Input from "@/components/Input";
+// import Input from "@/components/Input";
 
 const randomId = () => Math.random().toString(36).substring(2, 10);
 
@@ -27,8 +27,16 @@ export default function Home() {
       options,
     };
 
-    // 🎈 TODO: send a POST request to a PartyKit room
+    // send a POST request to a PartyKit room
+    await fetch(`${PARTYKIT_URL}/party/${id}`, {
+      method: "POST",
+      body: JSON.stringify(poll),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
+    // redirect to the newly created poll
     redirect(`/${id}`);
   }
 
